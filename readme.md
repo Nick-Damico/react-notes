@@ -254,5 +254,92 @@ This is done with a special attribute of which typically starts with `on` and de
      alert('Model is now open');
    }
 
-   <button onClick={modalFunc} />
+   <button onClick={modalFunc}>Modal</button>
  ```
+
+
+### JSX Conditionals: (If statements don't work like you think).
+
+You can NOT inject an `if` statement inside of a JSX expression.
+
+This is no good:
+```JavaScript
+  (
+    <h1>
+      {
+        if (user.loggedIn) {
+          'Welcome to the Store'
+        } else {
+          'Please, log in.'
+        }
+      }
+    </h1>
+  )
+```
+
+The reason is due to how JSX is compiled, but that is a deep subject, so if we can't inject `if/else` statements.. How do we write conditionals?
+
+**Conditional Option 1**
+
+Write the `if` statement outside of the JSX, not inside of it.
+
+```JavaScript
+  if (user.loggedIn) {
+    message = <h1 className="greeting">Welcome User!</h1>;
+  } else {
+    message = <h1 className="greeting">Please log In.</h1>;
+  }
+
+  ReactDOM.render(
+    message,
+    document.getElementById('app')
+  );
+```
+
+**Ternary statements Option 2**
+
+Ternary statements can be inside a JSX expression.
+
+```JavaScript
+    const greeting = (
+      <h1>
+        {user.loggedIn ? 'Welcome User' : 'Please log in.'}
+      </h1>
+    )
+```
+
+**JSX Conditionals: &&**
+
+These evaluate in an unexpected way from how we typically use them in JavaScript as Logical Operators where we decided if a both JavaScript statements evaluate to either `true && true` or `false && false`.
+
+`&&` JSX conditionals work best in conditions that sometimes do an action, but other times do nothing at all.
+
+example:
+
+```JavaScript
+  const barAdmission = (
+    <ul>
+      <h2>You are aloud to:</h2>
+      { age < 18 && <li>Buy Food</li> }
+      { age > 21 && <li>Buy Drinks</li> }
+    </ul>
+  )
+```
+Every time that you see && in this example, either some code will run, or else no code will run.
+
+
+### .map in JSX
+
+The array method `.map()` comes up often in React. If you want to create a list of JSX elements, then `.map()` is often your best bet. It can look odd at first:
+
+
+```JavaScript
+  const strings = ['Home', 'About', 'Projects' 'Contact'];
+
+  const navItems = strings.map(string => <a href={'#' + string}>string</a>);
+  ReactDOM.render(
+      <nav className="mainNav">{navItems}</nav>,
+      document.getElementById('app')
+  )
+
+```
