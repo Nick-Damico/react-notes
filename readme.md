@@ -493,3 +493,58 @@ This first letter class names adhere to JavaScript ES2015 Class syntax.
 - By subclassing React.Component, you create a new component class. This is not a component! A component class is more like a factory that produces components. When you start making components, each one will come from a component class.
 
 - Whenever you create a component class, you need to give that component class a name. That name should be written in UpperCamelCase. In this case, your chosen name is MyComponentClass.
+
+```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+
+  class MyComponentClass extends React.Component {
+    // Body of Class, think instructions for all classes instantiated from it.
+  }
+```
+
+The body of the class will act as set of instructions explaining to your component class how it should build a React Component.
+
+body example:
+```JavaScript
+  {
+    render() {
+      return <h1>Hello world</h1>;
+    }
+  }
+```
+
+The instructions must adhere to *ES2015 Class syntax*. There is only one property that is required: a render method. The render must return and it must return a *JSX element*!. And if multi-line it must adhere to what rules??
+ - If multi-line, it must be surrounded by parentheses.
+ - And the return can only return 1 element, so it must be enclosed with an single *JSX element*, like a `<div>//JSX</div>`.
+
+### Creating a Component Instance.
+
+  From code above, we have a component class called, `MyComponentClass`:
+
+  ```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+
+  class MyComponentClass extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+  }
+
+  ReactDOM.render(
+  <MyComponentClass />,
+  document.getElementById('app')
+  );
+  ```
+
+  We instantiate it in the `ReactDOM.render()`, if you rememeber correctly what is the first argument? A JSX Expression! And what does the `MyComponentClass` render()? a JSX Expression level one header of `Hello World`.
+
+  **Important** We don't pass it in like before when dealing with a variable, we use a new syntax:
+
+  ```JavaScript
+  ReactDOM.render(
+    <MyComponentClass />,
+    document.getElementById('app')
+  )
+  ```
