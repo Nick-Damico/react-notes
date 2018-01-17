@@ -42,7 +42,7 @@ pointGuard: <li>Femi Billon</li>
 
   JSX elements have attributes, think of attributes like for HTML elements.
 
-  A JSX attribute is written using HTML-like syntax:
+  A JSX attribute is written using HTML-like syntax
     - a name
     - followed by an equals sign
     - followed by a value
