@@ -461,3 +461,35 @@ So just remember if you are writing React Code this will need to be in each file
   So the library imported from `react` have methods for writing **React**, the library imported from `react-dom` deal with Rendering the React code to the DOM.
 
   **To clarify:** the DOM is used in React applications, but it isn't part of React. After all, the DOM is also used in countless non-React applications. Methods imported from 'react' are only for pure React purposes, such as creating components or writing JSX elements.
+
+
+## Create A Component class
+
+Once again, Component? Small, reusable chunk of code that has one job, rendering some HTML.
+
+One More thing, A **Component** must come from a component class.
+
+Think inheritance, We are inheriting from a previously defined class and what we end up creating is a *subclass*.
+
+`React.Component` is a JavaScript class. This is the class we inherit from:
+
+```JavaScript
+  class YourComponentClass extends React.Component { }
+```
+
+**React Components are BLUE PRINTS or Factories whichever way is easier to rememeber! We create instances of this object, instances of this class get rendered to the DOM**
+
+### Name a Component Class
+
+When you declare a new component class, you need to give that component class a name. Component class variables **names must begin with captial letters!**
+
+This first letter class names adhere to JavaScript ES2015 Class syntax.
+
+#### Recap on Classes INTRO.
+- Import React from 'react' creates a JavaScript object. This object contains properties that are needed to make React work, such as React.createElement() and React.Component.
+
+- Import ReactDOM from 'react-dom' creates another JavaScript object. This object contains methods that help React interact with the DOM, such as ReactDOM.render().
+
+- By subclassing React.Component, you create a new component class. This is not a component! A component class is more like a factory that produces components. When you start making components, each one will come from a component class.
+
+- Whenever you create a component class, you need to give that component class a name. That name should be written in UpperCamelCase. In this case, your chosen name is MyComponentClass.
