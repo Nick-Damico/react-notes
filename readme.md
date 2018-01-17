@@ -14,3 +14,26 @@ A basic unit of JSX is called a JSX element.
 <h1>Hello world</h1>
 ```
 **This only looks like HTML, It IS NOT. It's a JSX element and must be compiled down to Browser readable JavaScript first**
+
+*JSX Elements* are treated as JavaScript expressions. They can go anywhere a JS expression can go.
+
+This means they can:
+  - saved to a variable
+  - passed to a function
+  - stored in an object as a value.
+  - stored in an Array
+
+**Examples**
+```JavaScript
+const navBar = <nav>I am a nav bar</nav>;
+```
+
+```JavaScript
+const myTeam = {
+center: <li>Benzo Walli</li>,
+powerForward: <li>Rasha Loa</li>,
+smallForward: <li>Tayshaun Dasmoto</li>,
+shootingGuard: <li>Colmar Cumberbatch</li>,
+pointGuard: <li>Femi Billon</li>
+};
+```
