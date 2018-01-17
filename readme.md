@@ -170,8 +170,8 @@ ReactDOM.render(
     When JSX is rendered, JSX className attributes are automatically rendered as class attributes.
 
     JSX valid
-    ```JavaScript
-      <h1 className="greeting">Hello world</h1>
+```JavaScript
+  <h1 className="greeting">Hello world</h1>
 ```
 
 ### Self Closing Tags
