@@ -353,3 +353,44 @@ The array method `.map()` comes up often in React. If you want to create a list 
   )
 
 ```
+
+### Keys
+
+When you make a list in JSX, sometimes your list will need to include something called keys:
+```JavaScript
+<ul>
+  <li key="li-01">Example1</li>
+  <li key="li-02">Example2</li>
+  <li key="li-03">Example3</li>
+</ul>
+```
+
+A key is a JSX attribute. The attribute's name is key. The attribute's value should be something unique, similar to an id attribute.
+
+keys don't do anything that you can see! React uses them internally to keep track of lists. If you don't use keys when you're supposed to, React might accidentally scramble your list-items into the wrong order.
+
+Not all lists need to have keys. A list needs keys if either of the following are true:
+
+- The list-items have memory from one render to the next. For instance, when a to-do list renders, each item must "remember" whether it was checked off. The items shouldn't get amnesia when they render.
+
+- A list's order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+
+If neither of these conditions are true, then you don't have to worry about keys. If you aren't sure then it never hurts to use them!
+
+### Writing React code without JSX!!
+
+This isn't common practice among developers, but some developers are disturbed by mixing languages together and so they choose to write their React code the way it gets compiled instead of using JSX, which makes it much more difficult for others to read... and in my opinion code should be easy to read and understand that is good code, making code vague and near impossible to understand is not so good.
+
+With JSX:
+```JavaScript
+  const hello = <h1>Hello All</h1>;
+```
+
+Without JSX:
+```JavaScript
+  const h1 = React.createElement(
+    "h1",
+    {},
+    "Hello All"
+  );
+```
