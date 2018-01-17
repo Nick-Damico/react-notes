@@ -131,4 +131,27 @@ ReactDOM.render(<h1>Main Heading</h1>, document.getElementById('app'));
   ```
 
   - First, we call the ReactDOM.render() method. The first argument must be a JSX element or a JSX Component which returns a JSX expression.
-  - Secondly, the second argument passed is a reference to the DOM node you want to append the JSX expression into, here is is a `<div id="app"></app>` inside the DOM.
+  - Secondly, the second argument passed is a reference to the DOM node you want to append the JSX expression into, above it is a HTML element of `<div id="app"></app>` inside the DOM.
+
+
+#### Passing a Variable to ReactDOM.render()
+
+The first argument should evaluate to a JSX expression, it doesn't have to literally be one.
+
+```JavaScript
+const toDoList = (
+  <ol>
+    <li>Learn HTML and CSS</li>
+    <li>Learn JavaScript</li>
+    <li>Learn React.js</li>
+  </ol>
+)
+
+ReactDOM.render(
+  toDoList,
+  document.getElementById('app')
+);
+```
+
+**IMPORTANT**
+  One of the special things about React is that the ReactDOM.render() only updates elements that have changed. This is what makes it so fast and efficient. React only updates necessary DOM element changes, no wiping out all existing elements in a DOM node to update only a small change in data. This is accomplished because of something called the `virtual DOM`.https://www.codecademy.com/articles/react-virtual-dom 
