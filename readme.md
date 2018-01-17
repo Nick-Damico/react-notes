@@ -37,3 +37,23 @@ shootingGuard: <li>Colmar Cumberbatch</li>,
 pointGuard: <li>Femi Billon</li>
 };
 ```
+
+#### Attributes in JSX
+
+  JSX elements have attributes, think of attributes like for HTML elements.
+
+  A JSX attribute is written using HTML-like syntax:
+    - a name
+    - followed by an equals sign
+    - followed by a value
+
+  ```JavaScript
+  <a href="http://www.nicholasdamico.net">FullStack Developer</a>
+
+  const title = <h1 id="mainTitle">Intro to React</h1>;
+  ```
+
+  A JSX element can have many attributes like an HTML element:
+  ```JavaScript
+  const dogImg = <img src="img/doggy.png" alt="pic of my puppy" width="500px" height="500px" />;
+  ```
