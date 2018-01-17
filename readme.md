@@ -103,3 +103,32 @@ const paragraph = (
   <p>Post body</p>
 )
 ```
+
+
+### JSX Rendering
+
+Rendering a JSX element means to make it appear on screen.
+
+To render an element on screen we use the following code:
+
+```JavaScript
+ReactDOM.render(<h1>Main Heading</h1>, document.getElementById('app'));
+```
+
+#### ReactDOM
+
+  ReactDOM is a variable in the above code that references the ReactDOM library, this library contains several React-specific methods, all of which deal with the DOM in one way or another.
+
+  *.render()* is the method we will focus on here. It is the most common way to render JSX.
+  - it takes JSX expressions creates a corresponding tree of DOM nodes, and adds that tree to the DOM. That is how they appear on screen.
+
+  *Breaking Down the statement Below:*
+  ```JavaScript
+  ReactDOM.render(
+    <h1>Main Heading</h1>,
+    document.getElementById('app')
+  );
+  ```
+
+  - First, we call the ReactDOM.render() method. The first argument must be a JSX element or a JSX Component which returns a JSX expression.
+  - Secondly, the second argument passed is a reference to the DOM node you want to append the JSX expression into, here is is a `<div id="app"></app>` inside the DOM.
