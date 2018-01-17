@@ -176,7 +176,7 @@ ReactDOM.render(
 
 ### Self Closing Tags
 
-  - If an HTML element uses a self closing tag in `CSS3` adding a forward slash `/>` to close an element is no longer needed, but in JSX it is still required
+If an HTML element uses a self closing tag in `CSS3` adding a forward slash `/>` to close an element is no longer needed, but in JSX it is still required
 
   Invalid
   ```JavaScript
