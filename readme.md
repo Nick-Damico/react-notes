@@ -43,6 +43,7 @@ pointGuard: <li>Femi Billon</li>
   JSX elements have attributes, think of attributes like for HTML elements.
 
   A JSX attribute is written using HTML-like syntax
+
     - a name
     - followed by an equals sign
     - followed by a value
@@ -57,3 +58,27 @@ pointGuard: <li>Femi Billon</li>
   ```JavaScript
   const dogImg = <img src="img/doggy.png" alt="pic of my puppy" width="500px" height="500px" />;
   ```
+
+*** Nesting JSX
+
+You nest JSX elements inside of each other.
+
+```JavaScript
+<a href="http://example.com">
+  <h1>Logo</h1>
+</a>
+```
+
+These can be saved to variables as well
+
+```JavaScript
+const logo = (
+  <a href="https://example.com">
+    <h1>
+      Company Logo
+    </h1>
+  </a>
+);
+```
+
+**IMPORTANT** JSX elements which are longer then one line must be wrapped in a set of parentheses like the code above. 
