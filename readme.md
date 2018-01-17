@@ -538,7 +538,7 @@ The instructions must adhere to *ES2015 Class syntax*. There is only one propert
   );
   ```
 
-  We instantiate it in the `ReactDOM.render()`, if you rememeber correctly what is the first argument? A JSX Expression! And what does the `MyComponentClass` render()? a JSX Expression level one header of `Hello World`.
+  We instantiate it in the `ReactDOM.render()`, if you rememeber correctly what is the first argument? A JSX Element! And what does the `MyComponentClass` render()? a JSX Element level one header of `Hello World`.
 
   **Important** We don't pass it in like before when dealing with a variable, we use a new syntax:
 
@@ -548,3 +548,5 @@ The instructions must adhere to *ES2015 Class syntax*. There is only one propert
     document.getElementById('app')
   )
   ```
+
+  JSX elements can be either HTML-like, or component instances. JSX uses capitalization to distinguish between the two! That is the React-specific reason why component class names must begin with capital letters. 
