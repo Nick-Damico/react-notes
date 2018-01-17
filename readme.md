@@ -317,6 +317,7 @@ These evaluate in an unexpected way from how we typically use them in JavaScript
 example:
 
 ```JavaScript
+  const age = 22;
   const barAdmission = (
     <ul>
       <h2>You are aloud to:</h2>
@@ -324,6 +325,15 @@ example:
       { age > 21 && <li>Buy Drinks</li> }
     </ul>
   )
+```
+
+Result of code above:
+```HTML
+  <ul>
+    <h2>You are aloud to:</h2>
+    <li>Buy Food</li>
+    <li>Buy Drinks</li>
+  </ul>
 ```
 Every time that you see && in this example, either some code will run, or else no code will run.
 
