@@ -158,7 +158,7 @@ ReactDOM.render(
 
 ## JSX Advanced
 
- - class vs className
+ - **class vs className**
   - Grammer in JSX is mostly the same as in HTML, but there can be conflicts between keywords used in HTML and JavaScript. One of those being the keyword `class`.
 
     In HTML
