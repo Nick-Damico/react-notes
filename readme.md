@@ -154,4 +154,22 @@ ReactDOM.render(
 ```
 
 **IMPORTANT**
-  One of the special things about React is that the ReactDOM.render() only updates elements that have changed. This is what makes it so fast and efficient. React only updates necessary DOM element changes, no wiping out all existing elements in a DOM node to update only a small change in data. This is accomplished because of something called the `virtual DOM`.https://www.codecademy.com/articles/react-virtual-dom 
+  One of the special things about React is that the ReactDOM.render() only updates elements that have changed. This is what makes it so fast and efficient. React only updates necessary DOM element changes, no wiping out all existing elements in a DOM node to update only a small change in data. This is accomplished because of something called the `virtual DOM`.https://www.codecademy.com/articles/react-virtual-dom
+
+## JSX Advanced
+
+#### class vs className
+
+Grammer in JSX is mostly the same as in HTML, but there can be conflicts between keywords used in HTML and JavaScript. One of those being the keyword `class`.
+
+In HTML
+```HTML
+  <h1 class="greeting">Hello world</h1>
+```
+
+Since `class` is a reserved keyword in JavaScript and JSX is compiled to JavaScript this will cause an error, so in JSX we use the keyword `className` to set a class name on a JSX element which will compile to `class`.
+
+JSX valid
+```JavaScript
+  <h1 className="greeting">Hello world</h1>
+```
