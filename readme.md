@@ -189,7 +189,7 @@ If an HTML element uses a self closing tag in `CSS3` adding a forward slash `/>`
   ```
 
 
-## JavaScript In Your JSX In Your JavaScript
+### JavaScript In Your JSX In Your JavaScript
 
   How to write JavaScript expressions within our JSX.
 
@@ -204,11 +204,11 @@ If an HTML element uses a self closing tag in `CSS3` adding a forward slash `/>`
   )
 ```
 
-## Variables in your JSX
+### Variables in your JSX
 
 When you inject JavaScript into JSX, that JavaScript is part of the same environment as the rest of the JavaScript in your file.
 
-This means you can access variables while inside of a JSX expression, even if those variables were declared on the outside.
+This means you can access variables while inside of a JSX expression, even if those variables were declared on the outside because they share lexical scope and outside of those functions they can be found up the scope chain.
 
 ```JavaScript
   // Declare Variables
@@ -218,3 +218,41 @@ This means you can access variables while inside of a JSX expression, even if th
   // from inside of a JSX expression
   const greet = <h1 className="greeting">Hi, {name}</h1>;
 ```
+
+
+### Setting Attributes with Variables in JSX
+
+It's common to set the attributes of JSX elements with a variable that references an array or similar object.
+
+```JavaScript
+  // Use variable to set the width and height and src
+  const imgSize = {
+    width: '250px',
+    height: '250px'
+  }
+
+  const imgSrc = 'images/kitty.jgp';
+
+  const catImg = (
+    <img
+    src={imgSrc}
+    width={imgSize[width]}
+    height={imgSize[height]}/>
+  );
+```
+
+### Event Listeners in JSX
+
+JSX elements can have event listeners, just like HTML element can. Programming in React means constantly working with event listeners.
+
+This is done with a special attribute of which typically starts with `on` and describes the type of event it will be listening for such as: `onClick`, `onSubmit`, `onMouseOver`.
+
+ You can see a list of valid event names here https://reactjs.org/docs/events.html#supported-events.
+
+ ```JavaScript
+   function modalFunc() {
+     alert('Model is now open');
+   }
+
+   <button onClick={modalFunc} />
+ ```
