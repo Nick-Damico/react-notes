@@ -158,7 +158,7 @@ ReactDOM.render(
 
 ## JSX Advanced
 
- - **class vs className**
+### class vs className
   - Grammer in JSX is mostly the same as in HTML, but there can be conflicts between keywords used in HTML and JavaScript. One of those being the keyword `class`.
 
     In HTML
@@ -174,4 +174,47 @@ ReactDOM.render(
       <h1 className="greeting">Hello world</h1>
 ```
 
-#### Self Closing Tags
+### Self Closing Tags
+
+  - If an HTML element uses a self closing tag in `CSS3` adding a forward slash `/>` to close an element is no longer needed, but in JSX it is still required
+
+  Invalid
+  ```JavaScript
+    <input type='submit' >
+  ```
+
+  Valid
+  ```JavaScript
+    <input type='submit' />
+  ```
+
+
+## JavaScript In Your JSX In Your JavaScript
+
+  How to write JavaScript expressions within our JSX.
+
+  - First, any code between JSX element tags will be considered JSX text.
+  - If you want to have code that is evaluated as JavaScript you'll need to write code that says, "Even though I am located in between JSX tags, treat me like ordinary JavaScript and not like JSX."
+
+  To write this code that is evaluated as JavaScript within a JSX state it must be wrapped between curly braces.
+
+```JavaScript
+  ReactDOM.render(
+    <h1>Do Math 3 + 2 = {2+3}</h1>
+  )
+```
+
+## Variables in your JSX
+
+When you inject JavaScript into JSX, that JavaScript is part of the same environment as the rest of the JavaScript in your file.
+
+This means you can access variables while inside of a JSX expression, even if those variables were declared on the outside.
+
+```JavaScript
+  // Declare Variables
+  const name = 'Nick';
+
+  // Access your variable
+  // from inside of a JSX expression
+  const greet = <h1 className="greeting">Hi, {name}</h1>;
+```
