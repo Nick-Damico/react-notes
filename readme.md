@@ -394,3 +394,70 @@ Without JSX:
     "Hello All"
   );
 ```
+
+# React Components
+
+React applications are made out of components.
+
+A component is a small, reusable chunk of code that is responsible for one job. That job is often to render some HTML to the DOM.
+
+```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+
+  class MyComponentClass extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+  };
+
+  ReactDOM.render(
+  <MyComponentClass />,
+  document.getElementById('app')
+  );
+```
+
+### Breaking Down the Above code...
+
+Bringing in the React library
+
+```JavaScript
+  import React from 'react';
+```
+
+This above line of code creates a new variable, `React`, this variables value is the imported JavaScript object:
+
+```JavaScript
+// create a variable named React:
+import React from 'react';
+  // evaluate this variable and get a particular,
+  imported JavaScript object:
+  React // { imported object properties here... }
+```
+
+This `React` imported object contains methods that you need in order to use React. The object is called the `React Library`.
+
+So just remember if you are writing React Code this will need to be in each file at the top. `import React from 'react';`.
+
+#### So What methods do you get from React object?
+
+ We have encountered a few so far:
+ - React.createElement() - This is for creating React elements without the JSX elements.This is what gets created when JSX is compiled.
+ - Include more later.
+
+
+### Import ReactDOM.
+
+  So we have the `React` library thanks to `import React from 'react';`. But something is amiss... We can write React code but how do we render it to the `DOM`?
+
+  ```JavaScript
+    import ReactDOM from 'react-dom';
+  ```
+
+  This import statement works much the same as the one above with React library but here its a different library object `React DOM` which gives us access to methods for manipulating the *DOM*.
+
+  You are already familiar with one of them `ReactDOM.render()`;
+
+  So the library imported from `react` have methods for writing **React**, the library imported from `react-dom` deal with Rendering the React code to the DOM.
+
+  **To clarify:** the DOM is used in React applications, but it isn't part of React. After all, the DOM is also used in countless non-React applications. Methods imported from 'react' are only for pure React purposes, such as creating components or writing JSX elements.
