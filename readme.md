@@ -59,7 +59,7 @@ pointGuard: <li>Femi Billon</li>
   const dogImg = <img src="img/doggy.png" alt="pic of my puppy" width="500px" height="500px" />;
   ```
 
-*** Nesting JSX
+### Nesting JSX
 
 You nest JSX elements inside of each other.
 
@@ -81,4 +81,25 @@ const logo = (
 );
 ```
 
-**IMPORTANT** JSX elements which are longer then one line must be wrapped in a set of parentheses like the code above. 
+#### JSX NESTING RULES
+
+- JSX elements which are longer then one line must be wrapped in a set of parentheses like the code above.
+- JSX must have exactly one outermost element. This means if you have a multi-line expression or multiple JSX expressions they must contain a single out element.
+
+**Valid JSX**
+```JavaScript
+const paragraph = (
+  <div id="blog">
+    <h2>Post Header</h2>
+    <p>Post body</p>
+  </div>
+)
+```
+
+**Invalid JSX**
+```JavaScript
+const paragraph = (
+  <h2>Post Header</h2>
+  <p>Post body</p>
+)
+```
