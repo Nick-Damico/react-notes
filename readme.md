@@ -554,7 +554,7 @@ The instructions must adhere to *ES2015 Class syntax*. There is only one propert
 
 ## Use Multiline JSX in a Component
 
-  As a quick reminder, Multiline JSX expressions must be enclosed in parentheses! Inside the body of our Class which as you may recall are the instructions for all class instances must include at the very least a `render()` and it must return a JSX element.
+  As a quick reminder, Multiline JSX expressions must be enclosed in parentheses! Inside the body of our Class which as you may recall are the instructions for all class instances must include at the very least a `render()` and it must have a `return` statement that returns a JSX element.
 
   ```JavaScript
   class QuoteMaker extends React.Component {
@@ -575,3 +575,150 @@ The instructions must adhere to *ES2015 Class syntax*. There is only one propert
     }
   };
   ```
+
+  As we see above, we have a multiline element that is contained within parentheses following the `return` statement. More then one line... use parentheses.
+
+
+## Variable Attributes in a Component
+
+  First an example of an object:
+
+  ```JavaScript
+    const owlPic = {
+      title: 'Excellent Owl',
+      src: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-owl.jpg'
+    };
+  ```
+
+  Lets see how we would use the code above to *render* a JSX element:
+
+  ```JavaScript
+    class Owl extends React.Component {
+      render() {
+        return (
+            <div className={owl.title + '__el'}>
+              <h1>{owl.title}</h1>
+              <img src={owl.src}
+                   alt={owl.title} />
+            </div>
+        )        
+      }
+    }
+  ```
+
+### Logic within React functions
+
+A `Render()` function returns or must return a statement. But that isn't all that a `render()` function contains. Yes it must `return` a single JSX element but we can also place some logic here as well.
+
+```JavaScript
+  class RandomNumber extends React.Component {
+    render() {
+      return (
+        const rNum = Math.floor(Math.random() * 10 + 1);
+        // no parentheses because single line return.
+        // Curly braces to place JS executable code
+        return <h1>Your random number today is: {rNum}!</h1>
+      );
+    }
+  }
+```
+
+Watch out for this common mistake:
+```JavaScript
+  class Random extends React.Component {
+    // This should be in the render function:
+    const RNum = Math.floor(Math.random() * 10 + 1);
+
+    render() {
+      return <h1>Your random number today is: {rNum}!</h1>
+    }
+  };
+```
+
+In the above example, the line with the const n declaration will cause a syntax error, as is it should not be part of the class declaration itself, but should occur in a method like render().
+
+
+### Conditional in a Render Function
+
+Notice that the if statement is located inside of the render function, but before the return statement. This is pretty much the only way that you will ever see an if statement used in a render function.
+
+```JavaScript
+  class TodaysPlan extends React.Component {
+  render() {
+    let task;
+    if (!apocalypse) {
+      task = 'learn React.js'
+    } else {
+      task = 'run around'
+    }
+
+    return <h1>Today I am going to {task}!</h1>;
+  }
+  }
+
+  ReactDOM.render(
+  <TodaysPlan />,
+  document.getElementById('app')
+  );
+```
+
+### Keyword 'this' in a Component
+
+The word `this` gets used in React a lot!
+
+You will be most likely to see `this` inside of the body of a component class declaration. It may help to look over ES2015 class syntax examples. In typical situations `this` will refer to the instance of the class.
+
+```JavaScript
+  class IceCreamGuy extends React.Component {
+    get food() {
+      return 'ice cream';
+    }
+
+    render() {
+      return <h1>I like {this.food}.</h1>
+    }
+  }
+```
+What is `this` above?...
+
+The simple answer is that this refers to an instance of IceCreamGuy. The less simple answer is that this refers to the object on which this's enclosing method, in this case .render(), is called. It is almost inevitable that this object will be an instance of IceCreamGuy, but technically it could be something else.
+
+Let's assume that this refers to an instance of your component class, as will be the case in all examples in this course. IceCreamGuy has two methods: .food and .render(). Since this will evaluate to an instance of IceCreamGuy, this.food will evaluate to a call of IceCreamGuy's .food method. This method will, in turn, evaluate to the string "ice cream."
+
+Why don't you need parentheses after this.food? Shouldn't it be this.food()?
+
+You don't need those parentheses because .food is a getter method. You can tell this from the get in the above class declaration body.
+
+There's nothing React-specific about getter methods, nor about this behaving in this way! However, in React you will see this used in this way almost constantly.
+
+this in JavaScript can be a difficult concept! Here https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/
+
+
+### Event Listeners within a Component
+
+Recall that an event handler is a function that gets called in response to an event. We can declare a function within the body of the `class` which we set to a `onSomeAction` event attribute in an element.
+
+```JavaScript
+  class MyClass extends React.Component {
+  myFunc() {
+    alert('Stop it.  Stop hovering.');
+  }
+
+  render() {
+    return (
+      <div onHover={this.myFunc}>
+      </div>
+    );
+  }
+  }
+```
+
+# Components interact
+
+A React application can contain dozens, or even hundreds, of components.
+
+Each component might be small and relatively unremarkable on its own. When combined, however, they can form enormous, fantastically complex ecosystems of information.
+
+In other words, React apps are made out of components, but what makes React special isn't components themselves. What makes React special is the ways in which components interact.
+
+This unit is an introduction to components interacting.
