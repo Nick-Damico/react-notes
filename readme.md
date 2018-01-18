@@ -722,3 +722,302 @@ Each component might be small and relatively unremarkable on its own. When combi
 In other words, React apps are made out of components, but what makes React special isn't components themselves. What makes React special is the ways in which components interact.
 
 This unit is an introduction to components interacting.
+
+
+### Render Function
+You've seen render methods return <div></div>s, <p></p>s, and <h1></h1>s, just like in the above example.
+
+Render methods can also return another kind of JSX: component instances.
+
+```JavaScript
+  class OMG extends React.Component {
+  render() {
+    return <h1>Whooaa!</h1>;
+  }
+  }
+
+  class Crazy extends React.Component {
+  render() {
+    return <OMG />;
+  }
+  }
+```
+
+Example:
+
+```JavaScript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class NavBar extends React.Component {
+  render() {
+    const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
+    const navLinks = pages.map(page => {
+      return (
+        <a href={'/' + page}>
+          {page}
+        </a>
+      )
+    });
+
+    return <nav>{navLinks}</nav>;
+  }
+}
+
+class ProfilePage extends React.Component {
+  render() {
+    return (
+      <div>
+				<NavBar />
+        <h1>All About Me!</h1>
+        <p>I like movies and blah blah blah blah blah</p>
+        <img src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-monkeyselfie.jpg" />
+      </div>
+    );
+  }
+}
+```
+
+## Require a File
+
+
+### Import
+
+In the last example we saw two components being defined within the same file, what if they were in separate files from one another?
+
+Well we would need to make them see each other. If you want to use a variable that's declared in a different file, such as NavBar, then you have to import the variable that you want. To import a variable, you can use an import statement:
+
+```JavaScript
+  import { NavBar } from './NavBar.js';
+```
+
+We've used import before, but not like this! Notice the differences between the above line of code and this familiar line:
+
+```javascript
+  import React from 'react';
+```
+
+The first important difference is the curly braces around NavBar. We'll get to those soon!
+
+The second important difference involves the contents of the string at the end of the statement: 'react' vs './NavBar.js'.
+
+If you use an import statement, and the string at the end begins with either a dot or a slash, then import will treat that string as a filepath. import will follow that filepath, and import the file that it finds.
+
+If your filepath doesn't have a file extension, then ".js" is assumed. So the above example could be shortened. To not include it: `import { NavBar } from './NavBar';`.
+
+One final, important note:
+None of this behavior is specific to React! Module [http://eloquentjavascript.net/10_modules.html] systems of independent, importable files are a very popular way to organize code. React's specific module system comes from ES6 [https://hacks.mozilla.org/2015/08/es6-in-depth-modules/]. More on all of that later.
+
+## Export
+
+Alright! You've learned how to use import to grab a variable from a file other than the file that is currently executing.
+
+When you import a variable from a file that is not the current file, then an import statement isn't quite enough. You also need an export statement, written in the other file, exporting the variable that you hope to grab.
+
+export comes from ES6's module system, just like import does. export and import are meant to be used together, and you rarely see one without the other.
+
+There are a few different ways to use export. In this course, we will be using a style called "named exports." Here's how `named exports` works:
+
+In one file, place the keyword export immediately before something that you want to export. That something can be any top-level var, let, const, function, or class:
+```JavaScript
+  // Manifestos.js:
+
+  export const faveManifestos = {
+    futurist: 'http://www.artype.de/Sammlung/pdf/russolo_noise.pdf',
+    SCUM:     'http://www.ccs.neu.edu/home/shivers/rants/scum.html',
+    cyborg:   'http://faculty.georgetown.edu/irvinem/theory/Haraway-CyborgManifesto-1.pdf'
+};
+```
+
+You can export multiple things from the same file:
+
+```javascript
+  // Manifestos.js:
+
+  export const faveManifestos = {
+    futurist: 'http://www.artype.de/Sammlung/pdf/russolo_noise.pdf',
+    SCUM:     'http://www.ccs.neu.edu/home/shivers/rants/scum.html',
+    cyborg:   'http://faculty.georgetown.edu/irvinem/theory/Haraway-CyborgManifesto-1.pdf'
+  };
+
+  export const alsoRan = 'TimeCube';
+```
+
+This style of importing and exporting in JavaScript is known as "named exports." When you use named exports, you always need to wrap your imported names in curly braces.
+
+
+## THIS.PROPS
+
+Previously, you learned one way that components can interact: a component can render another component.
+
+In this lesson, you will learn another way that components can interact: a component can pass information to another component.
+
+Information that gets passed from one component to another is known as "props."
+
+### Access a Components props
+
+Every component has something called props.
+
+A component's props is an object. It holds information about that component.
+
+To see a component's props object, you use the expression this.props. Here's an example of this.props being used inside of a render method:
+
+```javascript
+  render() {
+    console.log("Props object comin' up!");
+
+    console.log(this.props);
+
+    console.log("That was my props object!");
+
+    return <h1>Hello world</h1>;
+  }
+```
+Most of the information in this.props is pretty useless! But some of it is extremely important, as you'll see.
+
+###Pass `props` to a Component
+You can pass information to a React component.
+
+How? By giving that component an attribute:
+
+`<MyComponent foo="bar" />`
+Let's say that you want to pass a component the message, `"This is some top secret info.".` Here's how you could do it:
+
+`<Example message="This is some top secret info." />`
+As you can see, to pass information to a component, you need a name for the information that you want to pass.
+
+In the above example, we used the name message. You can use any name you want.
+
+If you want to pass information that isn't a string, then wrap that information in curly braces. Here's how you would pass an array:
+
+`<Greeting myInfo={["top", "secret", "lol"]} />`
+In this next example, we pass several pieces of information to `<Greeting />.` The values that aren't strings are wrapped in curly braces:
+
+`<Greeting name="Frarthur" town="Flundon" age={2} haunted={false} />`
+
+###Pass props From Component To Component
+You have learned how to pass a prop to a component:
+
+`<Greeting firstName="Esmerelda" />`
+You have also learned how to access and display a passed-in prop:
+```javascript
+  render() {
+    return <h1>{this.props.firstName}</h1>;
+  }
+```
+
+
+**A curmudgeonly clarification about grammar:**
+
+You may have noticed some loose usage of the words prop and props. Unfortunately, this is pretty inevitable.
+
+props is the name of the object that stores passed-in information. this.props refers to that storage object. At the same time, each piece of passed-in information is called a prop. This means that props could refer to two pieces of passed-in information, or it could refer to the object that stores those pieces of information :(
+
+
+### Event Handlers in Component classes
+
+You can, and often will, pass functions as props. It is especially common to pass event handler functions.
+
+How do you define an event handler in React?
+
+You define an event handler as a method on the component class, just like the render method. Almost all functions that you define in React will be defined in this way, as methods in a class.
+
+```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import { Button } from './Button';
+
+  class Talker extends React.Component {
+  talk() {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+  }
+
+  render() {
+    return <Button />;
+  }
+  }
+
+  ReactDOM.render(
+  <Talker />,
+  document.getElementById('app')
+  );
+```
+
+We defined the `talk()` function as a method on the component class. Now we need to pass the event handler as a prop.
+
+You want to pass talk from here to `<Button />`.
+
+If you want to pass any prop to `<Button />`, that means that you need to give `<Button />` an attribute.
+
+What prop name should you choose?
+
+It doesn't really matter! prop attributes will work with just about any name, so long as the name follows the JavaScript variable name rules.
+
+Since you're going to pass a function named talk, you might as well use talk as your name. Inside of the render method, change your attribute name from foo to talk.
+
+```javascript
+render() {
+  return <Button talk="bar"/>;
+}
+```
+
+Your prop value should be the information that you want to pass! In this case, you want to pass the method named talk.
+
+Inside of the render method, change your attribute's value to talk. HINT: you will need to use both curly braces and this in order to successfully access talk.
+
+```javascript
+render() {
+  return <Button talk={this.talk}/>;
+}
+```
+
+#### Okay we are now sending an event handler to the above class, How do we Receive it?
+Like this...
+```javascript
+  export class Button extends React.Component {
+    render() {
+      return (
+        <button onClick={this.props.talk}>
+          Click me!
+        </button>
+      );
+    }
+  }
+```
+
+
+#### Naming conventions
+
+The event handler and prop name can be whatever you like, but there is a naming convention widely used in the React world. The event handler is typically called after what type event its listening for, above its a `click`. This is what this would look like when defining the event handler:
+
+```JavaScript
+  handleClick() {
+    alert('you clicked me!');
+  }
+```
+
+The next naming convention this the name of the prop you pass to the component you are rendering. Once again this can be whatever you want, but conventions say it should be `on` + the event type.
+
+```javascript
+  render(
+      return <Button onClick={this.handleClick} />
+    )
+```
+
+Now the `<Button />` class component expects to receive the name of `onClick`:
+
+```javascript
+export class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.props.onClick}>
+        Click me!
+      </button>
+    );
+  }
+}
+```
