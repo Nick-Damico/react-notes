@@ -549,4 +549,29 @@ The instructions must adhere to *ES2015 Class syntax*. There is only one propert
   )
   ```
 
-  JSX elements can be either HTML-like, or component instances. JSX uses capitalization to distinguish between the two! That is the React-specific reason why component class names must begin with capital letters. 
+  JSX elements can be either HTML-like, or component instances. JSX uses capitalization to distinguish between the two! That is the React-specific reason why component class names must begin with capital letters.
+
+
+## Use Multiline JSX in a Component
+
+  As a quick reminder, Multiline JSX expressions must be enclosed in parentheses! Inside the body of our Class which as you may recall are the instructions for all class instances must include at the very least a `render()` and it must return a JSX element.
+
+  ```JavaScript
+  class QuoteMaker extends React.Component {
+    render() {
+      return (
+        <blockquote>
+          <p>
+            “Programs must be written for people to read, and only incidentally for machines to execute.”
+          </p>
+          <cite>
+            <a target="_blank"
+              href="https://en.wikipedia.org/wiki/Douglas_Huebler">
+              Harold Abelson
+            </a>
+          </cite>
+        </blockquote>
+      );
+    }
+  };
+  ```
